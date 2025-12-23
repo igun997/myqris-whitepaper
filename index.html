@@ -263,7 +263,7 @@
       align-items: flex-start;
       gap: 10px;
     }
-    .card li::before { content: '→'; color: var(--primary); font-weight: 600; }
+    .card li::before { content: ''; width: 6px; height: 6px; background: var(--primary); border-radius: 50%; margin-top: 8px; flex-shrink: 0; }
 
     /* Hero Stats */
     .hero-stats {
@@ -1055,25 +1055,25 @@ function drawEscrowFlow() {
 }
 
 function drawProjectFlowSankey() {
-  var data = new google.visualization.DataTable();
-  data.addColumn('string', 'From');
-  data.addColumn('string', 'To');
-  data.addColumn('number', 'Count');
-  data.addRows([
-    ['Created', 'Funded', 95],
-    ['Created', 'Cancelled', 5],
-    ['Funded', 'In Progress', 90],
-    ['Funded', 'Cancelled', 5],
-    ['In Progress', 'Review', 85],
-    ['In Progress', 'Disputed', 5],
-    ['Review', 'Completed', 80],
-    ['Review', 'In Progress', 5],
+  var data = google.visualization.arrayToDataTable([
+    ['Status', 'Next Status', 'Count'],
+    ['1. Created', '2. Funded', 95],
+    ['1. Created', 'Cancelled', 5],
+    ['2. Funded', '3. In Progress', 90],
+    ['2. Funded', 'Cancelled', 5],
+    ['3. In Progress', '4. Review', 85],
+    ['3. In Progress', 'Disputed', 5],
+    ['4. Review', '5. Completed', 80],
+    ['4. Review', 'Revision Needed', 5],
     ['Disputed', 'Resolved', 5]
   ]);
   var options = {
     height: 320,
     sankey: {
-      node: {colors: ['#3B82F6', '#8B5CF6', '#10B981', '#F59E0B', '#EF4444'], label: {fontSize: 12}},
+      node: {
+        colors: ['#3B82F6', '#94A3B8', '#8B5CF6', '#94A3B8', '#F59E0B', '#EF4444', '#10B981', '#F59E0B', '#10B981'],
+        label: {fontSize: 12, color: '#0F172A'}
+      },
       link: {colorMode: 'gradient'}
     }
   };
