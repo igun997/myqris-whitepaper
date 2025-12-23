@@ -793,8 +793,8 @@
 <section id="escrow-flow">
   <h2><span class="num">8</span> Alur Escrow</h2>
 
-  <h3>Milestone Timeline</h3>
-  <div id="milestone-timeline" class="chart-container" style="min-height:280px"></div>
+  <h3>Durasi Tahapan Proyek</h3>
+  <div id="milestone-timeline" class="chart-container" style="min-height:350px"></div>
 
   <h3>Complete Escrow Flow</h3>
   <div class="timeline">
@@ -1084,35 +1084,38 @@ function drawProjectFlowSankey() {
 }
 
 function drawMilestoneTimeline() {
-  var container = document.getElementById('milestone-timeline');
-  var chart = new google.visualization.Timeline(container);
-  var dataTable = new google.visualization.DataTable();
-  dataTable.addColumn({type:'string', id:'Phase'});
-  dataTable.addColumn({type:'string', id:'Task'});
-  dataTable.addColumn({type:'string', role:'tooltip'});
-  dataTable.addColumn({type:'date', id:'Start'});
-  dataTable.addColumn({type:'date', id:'End'});
-  dataTable.addRows([
-    ['Milestone 1 (40%)', 'Riset & Konsep', 'Riset kebutuhan dan konsep awal\nDurasi: 5 hari', new Date(2025,0,1), new Date(2025,0,6)],
-    ['Milestone 1 (40%)', 'Desain UI/UX', 'Pembuatan mockup dan prototype\nDurasi: 4 hari', new Date(2025,0,6), new Date(2025,0,10)],
-    ['Milestone 1 (40%)', 'Review & Revisi', 'Review klien dan revisi\nDurasi: 2 hari', new Date(2025,0,10), new Date(2025,0,12)],
-    ['Milestone 2 (40%)', 'Development', 'Pengembangan fitur utama\nDurasi: 10 hari', new Date(2025,0,12), new Date(2025,0,22)],
-    ['Milestone 2 (40%)', 'Testing', 'QA dan bug fixing\nDurasi: 3 hari', new Date(2025,0,22), new Date(2025,0,25)],
-    ['Milestone 3 (20%)', 'Deployment', 'Deploy ke production\nDurasi: 2 hari', new Date(2025,0,25), new Date(2025,0,27)],
-    ['Milestone 3 (20%)', 'Handover', 'Dokumentasi & serah terima\nDurasi: 3 hari', new Date(2025,0,27), new Date(2025,0,30)]
+  var data = google.visualization.arrayToDataTable([
+    ['Tahap', 'Hari', {role: 'style'}, {role: 'annotation'}],
+    ['1. Riset & Konsep', 5, '#3B82F6', '5 hari'],
+    ['2. Desain UI/UX', 4, '#3B82F6', '4 hari'],
+    ['3. Review Klien', 3, '#60A5FA', '3 hari'],
+    ['4. Development', 10, '#8B5CF6', '10 hari'],
+    ['5. Testing & QA', 4, '#A78BFA', '4 hari'],
+    ['6. Deployment', 2, '#10B981', '2 hari'],
+    ['7. Handover', 2, '#34D399', '2 hari']
   ]);
-  chart.draw(dataTable, {
-    timeline: {
-      colorByRowLabel: true,
-      showBarLabels: true,
-      barLabelStyle: {fontSize: 12, fontName: 'Inter'},
-      rowLabelStyle: {fontSize: 13, fontName: 'Inter', color: '#0F172A'},
-      showRowLabels: true
+  var options = {
+    title: 'Durasi Setiap Tahap Proyek (Total: 30 Hari)',
+    titleTextStyle: {color: '#0F172A', fontSize: 16, bold: true},
+    legend: {position: 'none'},
+    chartArea: {width: '65%', height: '80%'},
+    hAxis: {
+      title: 'Durasi (Hari)',
+      minValue: 0,
+      textStyle: {color: '#64748B'}
     },
-    colors: ['#3B82F6', '#8B5CF6', '#10B981'],
+    vAxis: {
+      textStyle: {color: '#0F172A', fontSize: 12}
+    },
+    bar: {groupWidth: '70%'},
     backgroundColor: 'transparent',
-    avoidOverlappingGridLines: true
-  });
+    annotations: {
+      textStyle: {fontSize: 12, color: '#0F172A', bold: true},
+      alwaysOutside: true
+    },
+    animation: {startup: true, duration: 800, easing: 'out'}
+  };
+  new google.visualization.BarChart(document.getElementById('milestone-timeline')).draw(data, options);
 }
 
 function drawDisputeFunnel() {
