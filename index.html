@@ -1060,22 +1060,22 @@ function drawEscrowFlow() {
 function drawProjectFlowSankey() {
   var data = google.visualization.arrayToDataTable([
     ['Status', 'Next Status', 'Count'],
-    ['1. Created', '2. Funded', 95],
-    ['1. Created', 'Cancelled', 5],
-    ['2. Funded', '3. In Progress', 90],
-    ['2. Funded', 'Cancelled', 5],
-    ['3. In Progress', '4. Review', 85],
-    ['3. In Progress', 'Disputed', 5],
-    ['4. Review', '5. Completed', 80],
-    ['4. Review', 'Revision Needed', 5],
+    ['Created', 'Funded', 95],
+    ['Created', 'Cancelled (early)', 5],
+    ['Funded', 'In Progress', 95],
+    ['In Progress', 'Under Review', 90],
+    ['In Progress', 'Disputed', 5],
+    ['Under Review', 'Completed', 85],
+    ['Under Review', 'Needs Revision', 5],
     ['Disputed', 'Resolved', 5]
   ]);
   var options = {
     height: 320,
     sankey: {
       node: {
-        colors: ['#3B82F6', '#94A3B8', '#8B5CF6', '#94A3B8', '#F59E0B', '#EF4444', '#10B981', '#F59E0B', '#10B981'],
-        label: {fontSize: 12, color: '#0F172A'}
+        colors: ['#3B82F6', '#10B981', '#94A3B8', '#8B5CF6', '#F59E0B', '#EF4444', '#10B981', '#F59E0B', '#10B981'],
+        label: {fontSize: 12, color: '#0F172A', bold: true},
+        nodePadding: 20
       },
       link: {colorMode: 'gradient'}
     }
