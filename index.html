@@ -7,6 +7,7 @@
   <meta name="description" content="Platform Escrow Berbasis Blockchain untuk Transaksi Freelance Indonesia">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
   <script src="https://www.gstatic.com/charts/loader.js"></script>
   <style>
     :root {
@@ -246,13 +247,13 @@
       width: 50px; height: 50px;
       border-radius: 12px;
       display: flex; align-items: center; justify-content: center;
-      font-size: 1.5rem;
       margin-bottom: 16px;
     }
-    .card-icon.primary { background: rgba(59,130,246,0.1); }
-    .card-icon.success { background: rgba(16,185,129,0.1); }
-    .card-icon.warning { background: rgba(245,158,11,0.1); }
-    .card-icon.danger { background: rgba(239,68,68,0.1); }
+    .card-icon svg { width: 24px; height: 24px; }
+    .card-icon.primary { background: rgba(59,130,246,0.1); color: var(--primary); }
+    .card-icon.success { background: rgba(16,185,129,0.1); color: var(--success); }
+    .card-icon.warning { background: rgba(245,158,11,0.1); color: var(--warning); }
+    .card-icon.danger { background: rgba(239,68,68,0.1); color: var(--danger); }
     .card h4 { font-size: 1.1rem; font-weight: 600; color: var(--dark); margin-bottom: 12px; }
     .card ul { list-style: none; }
     .card li {
@@ -455,8 +456,10 @@
       border-radius: 10px;
       display: flex; align-items: center; justify-content: center;
       color: white;
-      font-size: 1rem;
+      flex-shrink: 0;
     }
+    .feature-icon svg { width: 18px; height: 18px; }
+    .num svg { width: 22px; height: 22px; }
 
     /* Footer */
     footer {
@@ -564,10 +567,10 @@
   </div>
 
   <div class="features">
-    <div class="feature"><div class="feature-icon">🛡️</div> Perlindungan Dana Otomatis</div>
-    <div class="feature"><div class="feature-icon">⚡</div> Transaksi Instan dengan IDRX</div>
-    <div class="feature"><div class="feature-icon">🔍</div> Transparansi Blockchain</div>
-    <div class="feature"><div class="feature-icon">💰</div> Biaya Terendah di Industri</div>
+    <div class="feature"><div class="feature-icon"><i data-lucide="shield-check"></i></div> Perlindungan Dana Otomatis</div>
+    <div class="feature"><div class="feature-icon"><i data-lucide="zap"></i></div> Transaksi Instan dengan IDRX</div>
+    <div class="feature"><div class="feature-icon"><i data-lucide="search"></i></div> Transparansi Blockchain</div>
+    <div class="feature"><div class="feature-icon"><i data-lucide="wallet"></i></div> Biaya Terendah di Industri</div>
   </div>
 </section>
 
@@ -577,7 +580,7 @@
 
   <div class="grid grid-2">
     <div class="card">
-      <div class="card-icon danger">⚠️</div>
+      <div class="card-icon danger"><i data-lucide="alert-triangle"></i></div>
       <h4>Risiko Klien</h4>
       <ul>
         <li>28% pernah ditipu freelancer</li>
@@ -587,7 +590,7 @@
       </ul>
     </div>
     <div class="card">
-      <div class="card-icon warning">💸</div>
+      <div class="card-icon warning"><i data-lucide="banknote"></i></div>
       <h4>Risiko Freelancer</h4>
       <ul>
         <li>35% pernah tidak dibayar klien</li>
@@ -640,7 +643,7 @@
 
   <div class="grid grid-2">
     <div class="card">
-      <div class="card-icon success">✓</div>
+      <div class="card-icon success"><i data-lucide="check-circle"></i></div>
       <h4>Keunggulan MyQRIS</h4>
       <ul>
         <li><strong>Transparansi:</strong> Semua transaksi tercatat on-chain</li>
@@ -651,7 +654,7 @@
       </ul>
     </div>
     <div class="card">
-      <div class="card-icon primary">⚙️</div>
+      <div class="card-icon primary"><i data-lucide="settings"></i></div>
       <h4>Tech Stack Modern</h4>
       <ul>
         <li><strong>Frontend:</strong> React + TailwindCSS + shadcn/ui</li>
@@ -694,11 +697,11 @@
   <h3>Strategi Penyimpanan Data</h3>
   <div class="comparison">
     <div class="comparison-item highlight">
-      <h4>🔗 On-Chain (Blockchain)</h4>
+      <h4><i data-lucide="link" style="width:18px;height:18px;display:inline;vertical-align:middle;margin-right:8px"></i>On-Chain (Blockchain)</h4>
       <p>Dana Escrow (IDRX), Status Proyek, Milestone Completion, Payment History, Dispute Resolution, Transaction Hash</p>
     </div>
     <div class="comparison-item">
-      <h4>🗄️ Off-Chain (Database)</h4>
+      <h4><i data-lucide="database" style="width:18px;height:18px;display:inline;vertical-align:middle;margin-right:8px"></i>Off-Chain (Database)</h4>
       <p>Data Profil User, Deskripsi Proyek, File Attachment, Chat Messages, Notifikasi</p>
     </div>
   </div>
@@ -767,7 +770,7 @@
 
   <div class="grid grid-2">
     <div class="card">
-      <div class="card-icon success">📥</div>
+      <div class="card-icon success"><i data-lucide="download"></i></div>
       <h4>Top-up Options</h4>
       <ul>
         <li>Bank Transfer (Virtual Account) - Auto convert</li>
@@ -776,7 +779,7 @@
       </ul>
     </div>
     <div class="card">
-      <div class="card-icon primary">📤</div>
+      <div class="card-icon primary"><i data-lucide="upload"></i></div>
       <h4>Withdrawal Options</h4>
       <ul>
         <li>Bank Transfer - T+1 settlement</li>
@@ -823,7 +826,7 @@
 
   <div class="grid grid-3">
     <div class="card">
-      <div class="card-icon primary">🔐</div>
+      <div class="card-icon primary"><i data-lucide="lock"></i></div>
       <h4>Application Layer</h4>
       <ul>
         <li>JWT + Refresh Token Auth</li>
@@ -833,7 +836,7 @@
       </ul>
     </div>
     <div class="card">
-      <div class="card-icon success">⛓️</div>
+      <div class="card-icon success"><i data-lucide="link"></i></div>
       <h4>Blockchain Layer</h4>
       <ul>
         <li>Smart Contract Audit</li>
@@ -843,7 +846,7 @@
       </ul>
     </div>
     <div class="card">
-      <div class="card-icon warning">🏢</div>
+      <div class="card-icon warning"><i data-lucide="building"></i></div>
       <h4>Operational Layer</h4>
       <ul>
         <li>Multi-sig Admin Wallet</li>
@@ -911,7 +914,7 @@
 
 <!-- Glossary -->
 <section>
-  <h2><span class="num">📖</span> Glosarium</h2>
+  <h2><span class="num"><i data-lucide="book-open"></i></span> Glosarium</h2>
   <table>
     <thead>
       <tr><th>Istilah</th><th>Definisi</th></tr>
@@ -1184,6 +1187,9 @@ window.addEventListener('resize', function() {
   clearTimeout(window.resizeTimer);
   window.resizeTimer = setTimeout(initCharts, 300);
 });
+
+// Initialize Lucide icons
+lucide.createIcons();
 </script>
 
 </body>
