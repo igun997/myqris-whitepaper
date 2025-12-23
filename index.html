@@ -3,68 +3,523 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MyQRIS Whitepaper - Platform Escrow Blockchain</title>
+  <title>MyQRIS Whitepaper - Platform Escrow Blockchain Indonesia</title>
+  <meta name="description" content="Platform Escrow Berbasis Blockchain untuk Transaksi Freelance Indonesia">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <script src="https://www.gstatic.com/charts/loader.js"></script>
   <style>
-    :root{--primary:#0052FF;--success:#10B981;--warning:#F59E0B;--danger:#EF4444;--gray:#6B7280;--dark:#1a1a1a;--light:#f8fafc}
-    *{margin:0;padding:0;box-sizing:border-box}
-    body{font-family:'Segoe UI',system-ui,sans-serif;line-height:1.6;color:var(--dark);background:var(--light)}
-    .container{max-width:1200px;margin:0 auto;padding:20px}
-    header{background:linear-gradient(135deg,var(--primary),#0040cc);color:#fff;padding:60px 20px;text-align:center}
-    header h1{font-size:2.5rem;margin-bottom:10px}
-    header p{opacity:0.9;font-size:1.1rem}
-    nav{background:#fff;padding:15px;box-shadow:0 2px 10px rgba(0,0,0,0.1);position:sticky;top:0;z-index:100}
-    nav ul{display:flex;flex-wrap:wrap;justify-content:center;gap:15px;list-style:none}
-    nav a{color:var(--primary);text-decoration:none;font-weight:500;font-size:0.9rem}
-    nav a:hover{text-decoration:underline}
-    section{background:#fff;margin:20px 0;padding:30px;border-radius:12px;box-shadow:0 2px 10px rgba(0,0,0,0.05)}
-    h2{color:var(--primary);border-bottom:3px solid var(--primary);padding-bottom:10px;margin-bottom:20px}
-    h3{color:var(--dark);margin:20px 0 10px}
-    .chart-container{width:100%;min-height:350px;margin:20px 0}
-    .grid{display:grid;gap:20px}
-    .grid-2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
-    .card{background:var(--light);padding:20px;border-radius:8px;border-left:4px solid var(--primary)}
-    .card.success{border-color:var(--success)}
-    .card.warning{border-color:var(--warning)}
-    .card.danger{border-color:var(--danger)}
-    table{width:100%;border-collapse:collapse;margin:15px 0}
-    th,td{padding:12px;text-align:left;border-bottom:1px solid #e5e7eb}
-    th{background:var(--primary);color:#fff}
-    tr:hover{background:#f1f5f9}
-    .badge{display:inline-block;padding:4px 12px;border-radius:20px;font-size:0.8rem;font-weight:600}
-    .badge-primary{background:var(--primary);color:#fff}
-    .badge-success{background:var(--success);color:#fff}
-    .badge-warning{background:var(--warning);color:#fff}
-    pre{background:#1e293b;color:#e2e8f0;padding:20px;border-radius:8px;overflow-x:auto;font-size:0.85rem}
-    .code-keyword{color:#f472b6}
-    .code-string{color:#a5f3fc}
-    .code-comment{color:#94a3b8}
-    .diagram-box{background:#f8fafc;border:2px solid #e2e8f0;border-radius:8px;padding:20px;margin:15px 0;font-family:monospace;font-size:0.85rem;overflow-x:auto;white-space:pre}
-    .highlight{background:linear-gradient(135deg,var(--primary),var(--success));color:#fff;padding:30px;border-radius:12px;text-align:center;margin:20px 0}
-    .highlight h3{color:#fff;margin-bottom:10px}
-    .stats{display:flex;justify-content:center;gap:40px;flex-wrap:wrap;margin-top:20px}
-    .stat{text-align:center}
-    .stat-value{font-size:2rem;font-weight:700}
-    .stat-label{font-size:0.9rem;opacity:0.9}
-    .timeline{position:relative;padding-left:30px}
-    .timeline::before{content:'';position:absolute;left:10px;top:0;bottom:0;width:3px;background:var(--primary)}
-    .timeline-item{position:relative;margin-bottom:25px;padding-left:20px}
-    .timeline-item::before{content:'';position:absolute;left:-24px;top:5px;width:12px;height:12px;border-radius:50%;background:var(--primary)}
-    .timeline-item.done::before{background:var(--success)}
-    .flow-diagram{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:10px;padding:20px}
-    .flow-box{background:var(--primary);color:#fff;padding:15px 25px;border-radius:8px;text-align:center;min-width:120px}
-    .flow-arrow{font-size:1.5rem;color:var(--primary)}
-    footer{background:var(--dark);color:#fff;padding:40px 20px;text-align:center;margin-top:40px}
-    footer a{color:var(--success)}
-    @media(max-width:768px){header h1{font-size:1.8rem}nav ul{flex-direction:column;align-items:center}section{padding:20px}}
+    :root {
+      --primary: #3B82F6;
+      --primary-dark: #1D4ED8;
+      --primary-light: #60A5FA;
+      --accent: #8B5CF6;
+      --success: #10B981;
+      --warning: #F59E0B;
+      --danger: #EF4444;
+      --dark: #0F172A;
+      --dark-secondary: #1E293B;
+      --gray: #64748B;
+      --gray-light: #94A3B8;
+      --light: #F8FAFC;
+      --white: #FFFFFF;
+      --gradient-primary: linear-gradient(135deg, #3B82F6 0%, #8B5CF6 100%);
+      --gradient-dark: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+      --gradient-glow: linear-gradient(135deg, rgba(59,130,246,0.2) 0%, rgba(139,92,246,0.2) 100%);
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+      --shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+      --shadow-lg: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+      --shadow-xl: 0 25px 50px -12px rgba(0,0,0,0.25);
+      --shadow-glow: 0 0 40px rgba(59,130,246,0.3);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.7;
+      color: var(--dark);
+      background: var(--light);
+      overflow-x: hidden;
+    }
+    ::selection { background: var(--primary); color: white; }
+
+    /* Animated Background */
+    .bg-pattern {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-image:
+        radial-gradient(circle at 20% 50%, rgba(59,130,246,0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(139,92,246,0.08) 0%, transparent 50%),
+        radial-gradient(circle at 40% 80%, rgba(16,185,129,0.05) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    /* Header */
+    header {
+      background: var(--gradient-dark);
+      color: white;
+      padding: 100px 20px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    header::before {
+      content: '';
+      position: absolute;
+      top: -50%; left: -50%;
+      width: 200%; height: 200%;
+      background:
+        radial-gradient(circle at 30% 70%, rgba(59,130,246,0.15) 0%, transparent 40%),
+        radial-gradient(circle at 70% 30%, rgba(139,92,246,0.15) 0%, transparent 40%);
+      animation: float 20s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); }
+      50% { transform: translate(-2%, 2%) rotate(5deg); }
+    }
+    .header-content {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 30px;
+      padding: 12px 24px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .logo-icon {
+      width: 40px; height: 40px;
+      background: var(--gradient-primary);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 18px;
+    }
+    .logo-text { font-weight: 700; font-size: 1.3rem; letter-spacing: -0.5px; }
+    header h1 {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 800;
+      letter-spacing: -2px;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, #fff 0%, #94A3B8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    header p {
+      font-size: 1.25rem;
+      color: var(--gray-light);
+      max-width: 600px;
+      margin: 0 auto 30px;
+    }
+    .version-badge {
+      display: inline-block;
+      padding: 8px 20px;
+      background: rgba(59,130,246,0.2);
+      border: 1px solid rgba(59,130,246,0.3);
+      border-radius: 50px;
+      font-size: 0.9rem;
+      color: var(--primary-light);
+    }
+
+    /* Navigation */
+    nav {
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(20px);
+      padding: 16px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      box-shadow: var(--shadow);
+    }
+    nav ul {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      list-style: none;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    nav a {
+      color: var(--gray);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.9rem;
+      padding: 8px 16px;
+      border-radius: 8px;
+      transition: all 0.2s ease;
+    }
+    nav a:hover {
+      color: var(--primary);
+      background: rgba(59,130,246,0.1);
+    }
+
+    /* Container */
+    .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+
+    /* Sections */
+    section {
+      background: var(--white);
+      margin: 30px 0;
+      padding: 50px;
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(0,0,0,0.05);
+      position: relative;
+      overflow: hidden;
+    }
+    section::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: var(--gradient-primary);
+    }
+    h2 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 30px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    h2 .num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 45px; height: 45px;
+      background: var(--gradient-primary);
+      color: white;
+      border-radius: 12px;
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+    h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--dark);
+      margin: 35px 0 20px;
+    }
+    p { color: var(--gray); margin-bottom: 15px; }
+
+    /* Charts */
+    .chart-container {
+      width: 100%;
+      min-height: 380px;
+      margin: 25px 0;
+      padding: 20px;
+      background: var(--light);
+      border-radius: 16px;
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+
+    /* Grid */
+    .grid { display: grid; gap: 24px; }
+    .grid-2 { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
+    .grid-3 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+    .grid-4 { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+
+    /* Cards */
+    .card {
+      background: var(--white);
+      padding: 28px;
+      border-radius: 16px;
+      border: 1px solid rgba(0,0,0,0.08);
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+    .card-icon {
+      width: 50px; height: 50px;
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 16px;
+    }
+    .card-icon.primary { background: rgba(59,130,246,0.1); }
+    .card-icon.success { background: rgba(16,185,129,0.1); }
+    .card-icon.warning { background: rgba(245,158,11,0.1); }
+    .card-icon.danger { background: rgba(239,68,68,0.1); }
+    .card h4 { font-size: 1.1rem; font-weight: 600; color: var(--dark); margin-bottom: 12px; }
+    .card ul { list-style: none; }
+    .card li {
+      padding: 8px 0;
+      color: var(--gray);
+      font-size: 0.95rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .card li::before { content: '→'; color: var(--primary); font-weight: 600; }
+
+    /* Hero Stats */
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 24px;
+      margin: 40px 0;
+    }
+    .stat-card {
+      background: var(--gradient-primary);
+      padding: 30px;
+      border-radius: 20px;
+      color: white;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .stat-card::before {
+      content: '';
+      position: absolute;
+      top: -50%; right: -50%;
+      width: 100%; height: 100%;
+      background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
+    }
+    .stat-card.alt { background: var(--gradient-dark); }
+    .stat-value { font-size: 2.5rem; font-weight: 800; position: relative; }
+    .stat-label { font-size: 0.95rem; opacity: 0.9; margin-top: 5px; position: relative; }
+
+    /* Tables */
+    table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+    th, td { padding: 16px 20px; text-align: left; }
+    th {
+      background: var(--dark);
+      color: white;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    th:first-child { border-radius: 12px 0 0 0; }
+    th:last-child { border-radius: 0 12px 0 0; }
+    tr { border-bottom: 1px solid rgba(0,0,0,0.05); transition: background 0.2s; }
+    tbody tr:hover { background: var(--light); }
+    td { color: var(--gray); }
+
+    /* Badges */
+    .badge {
+      display: inline-block;
+      padding: 6px 14px;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+    .badge-primary { background: rgba(59,130,246,0.1); color: var(--primary); }
+    .badge-success { background: rgba(16,185,129,0.1); color: var(--success); }
+    .badge-warning { background: rgba(245,158,11,0.1); color: var(--warning); }
+
+    /* Code */
+    pre {
+      background: var(--dark);
+      color: #E2E8F0;
+      padding: 28px;
+      border-radius: 16px;
+      overflow-x: auto;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      line-height: 1.8;
+      position: relative;
+    }
+    pre::before {
+      content: 'Solidity';
+      position: absolute;
+      top: 12px; right: 16px;
+      font-size: 0.75rem;
+      color: var(--gray);
+      font-family: 'Inter', sans-serif;
+    }
+    .code-keyword { color: #F472B6; }
+    .code-type { color: #67E8F9; }
+    .code-string { color: #A5F3FC; }
+    .code-comment { color: #64748B; }
+    .code-func { color: #FBBF24; }
+
+    /* Flow Diagram */
+    .flow-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding: 40px 20px;
+      background: var(--light);
+      border-radius: 20px;
+      margin: 30px 0;
+    }
+    .flow-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+    .flow-box {
+      padding: 20px 30px;
+      border-radius: 16px;
+      font-weight: 600;
+      text-align: center;
+      min-width: 140px;
+      box-shadow: var(--shadow);
+    }
+    .flow-box.primary { background: var(--primary); color: white; }
+    .flow-box.success { background: var(--success); color: white; }
+    .flow-box.warning { background: var(--warning); color: white; }
+    .flow-box.dark { background: var(--dark); color: white; }
+    .flow-box small { display: block; font-weight: 400; opacity: 0.8; margin-top: 4px; }
+    .flow-arrow {
+      font-size: 1.8rem;
+      color: var(--gray-light);
+    }
+
+    /* Timeline */
+    .timeline { padding: 20px 0 20px 40px; position: relative; }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 15px; top: 0; bottom: 0;
+      width: 3px;
+      background: linear-gradient(to bottom, var(--primary), var(--accent));
+      border-radius: 3px;
+    }
+    .timeline-item {
+      position: relative;
+      margin-bottom: 30px;
+      padding-left: 30px;
+    }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -32px; top: 6px;
+      width: 16px; height: 16px;
+      border-radius: 50%;
+      background: var(--primary);
+      border: 4px solid var(--white);
+      box-shadow: var(--shadow);
+    }
+    .timeline-item.done::before { background: var(--success); }
+    .timeline-item strong { color: var(--dark); }
+
+    /* Comparison Block */
+    .comparison {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2px;
+      background: var(--gray-light);
+      border-radius: 16px;
+      overflow: hidden;
+      margin: 25px 0;
+    }
+    .comparison-item {
+      background: var(--white);
+      padding: 24px;
+    }
+    .comparison-item h4 {
+      font-size: 1rem;
+      margin-bottom: 15px;
+      color: var(--dark);
+    }
+    .comparison-item.highlight { background: rgba(59,130,246,0.05); }
+
+    /* Feature List */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 16px;
+      margin: 25px 0;
+    }
+    .feature {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 20px;
+      background: var(--light);
+      border-radius: 12px;
+      font-weight: 500;
+      color: var(--dark);
+    }
+    .feature-icon {
+      width: 36px; height: 36px;
+      background: var(--gradient-primary);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      color: white;
+      font-size: 1rem;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--dark);
+      color: white;
+      padding: 60px 20px;
+      text-align: center;
+      margin-top: 60px;
+    }
+    .footer-logo {
+      font-size: 1.8rem;
+      font-weight: 800;
+      margin-bottom: 15px;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .footer-links { margin: 25px 0; }
+    .footer-links a {
+      color: var(--gray-light);
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--primary-light); }
+    .footer-copy { color: var(--gray); font-size: 0.9rem; margin-top: 30px; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      header { padding: 60px 20px 50px; }
+      section { padding: 30px 20px; margin: 20px 0; }
+      nav ul { gap: 4px; }
+      nav a { padding: 6px 12px; font-size: 0.8rem; }
+      .comparison { grid-template-columns: 1fr; }
+      h2 { font-size: 1.4rem; }
+      .flow-container { flex-direction: column; }
+      .flow-arrow { transform: rotate(90deg); }
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    section { animation: fadeInUp 0.6s ease-out; }
   </style>
 </head>
 <body>
 
+<div class="bg-pattern"></div>
+
 <header>
-  <h1>MyQRIS Whitepaper</h1>
-  <p>Platform Escrow Berbasis Blockchain untuk Transaksi Freelance Indonesia</p>
-  <p style="margin-top:10px;font-size:0.9rem">Versi 1.0 | Desember 2025</p>
+  <div class="header-content">
+    <div class="logo">
+      <div class="logo-icon">M</div>
+      <span class="logo-text">MyQRIS</span>
+    </div>
+    <h1>Whitepaper</h1>
+    <p>Platform Escrow Berbasis Blockchain untuk Transaksi Freelance Indonesia</p>
+    <span class="version-badge">Versi 1.0 • Desember 2025</span>
+  </div>
 </header>
 
 <nav>
@@ -84,41 +539,61 @@
 
 <div class="container">
 
-<!-- Section 1: Pendahuluan -->
+<!-- Section 1 -->
 <section id="intro">
-  <h2>1. Pendahuluan</h2>
-  <p>MyQRIS adalah platform rekening bersama (escrow) yang dibangun di atas teknologi blockchain <strong>Base (Layer 2 Ethereum)</strong> untuk mengamankan transaksi antara klien dan freelancer di Indonesia.</p>
+  <h2><span class="num">1</span> Pendahuluan</h2>
+  <p>MyQRIS adalah platform rekening bersama (escrow) yang dibangun di atas teknologi blockchain <strong>Base (Layer 2 Ethereum)</strong> untuk mengamankan transaksi antara klien dan freelancer di Indonesia. Platform ini menggabungkan kemudahan penggunaan aplikasi web modern dengan keamanan dan transparansi teknologi blockchain.</p>
 
-  <div class="highlight">
-    <h3>Visi & Misi</h3>
-    <p>Menjadi platform escrow terpercaya #1 di Indonesia dengan perlindungan maksimal bagi semua pihak</p>
-    <div class="stats">
-      <div class="stat"><div class="stat-value">1.5%</div><div class="stat-label">Biaya Transaksi</div></div>
-      <div class="stat"><div class="stat-value">2s</div><div class="stat-label">Settlement Time</div></div>
-      <div class="stat"><div class="stat-value">100%</div><div class="stat-label">Transparansi</div></div>
+  <div class="hero-stats">
+    <div class="stat-card">
+      <div class="stat-value">1.5%</div>
+      <div class="stat-label">Biaya Transaksi</div>
     </div>
+    <div class="stat-card alt">
+      <div class="stat-value">2s</div>
+      <div class="stat-label">Settlement Time</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value">100%</div>
+      <div class="stat-label">On-Chain Transparency</div>
+    </div>
+    <div class="stat-card alt">
+      <div class="stat-value">24/7</div>
+      <div class="stat-label">Operasional</div>
+    </div>
+  </div>
+
+  <div class="features">
+    <div class="feature"><div class="feature-icon">🛡️</div> Perlindungan Dana Otomatis</div>
+    <div class="feature"><div class="feature-icon">⚡</div> Transaksi Instan dengan IDRX</div>
+    <div class="feature"><div class="feature-icon">🔍</div> Transparansi Blockchain</div>
+    <div class="feature"><div class="feature-icon">💰</div> Biaya Terendah di Industri</div>
   </div>
 </section>
 
-<!-- Section 2: Permasalahan -->
+<!-- Section 2 -->
 <section id="problem">
-  <h2>2. Permasalahan</h2>
+  <h2><span class="num">2</span> Permasalahan</h2>
 
   <div class="grid grid-2">
-    <div class="card danger">
+    <div class="card">
+      <div class="card-icon danger">⚠️</div>
       <h4>Risiko Klien</h4>
       <ul>
         <li>28% pernah ditipu freelancer</li>
         <li>Hasil tidak sesuai ekspektasi</li>
         <li>Freelancer kabur setelah DP</li>
+        <li>Tidak ada jaminan kualitas</li>
       </ul>
     </div>
-    <div class="card warning">
+    <div class="card">
+      <div class="card-icon warning">💸</div>
       <h4>Risiko Freelancer</h4>
       <ul>
-        <li>35% pernah tidak dibayar</li>
-        <li>Pembayaran tertunda</li>
-        <li>Revisi tanpa batas</li>
+        <li>35% pernah tidak dibayar klien</li>
+        <li>Pembayaran sering tertunda</li>
+        <li>Revisi tanpa batas dari klien</li>
+        <li>Tidak ada kontrak yang jelas</li>
       </ul>
     </div>
   </div>
@@ -127,246 +602,345 @@
   <div id="fee-comparison-chart" class="chart-container"></div>
 
   <table>
-    <tr><th>Solusi Existing</th><th>Kelemahan</th></tr>
-    <tr><td>Transfer Langsung</td><td>Tidak ada perlindungan</td></tr>
-    <tr><td>Rekber Manual</td><td>Bergantung kepercayaan pihak ketiga</td></tr>
-    <tr><td>Platform Freelance</td><td>Biaya tinggi (15-20%)</td></tr>
-    <tr><td>E-wallet</td><td>Tidak ada mekanisme escrow</td></tr>
+    <thead>
+      <tr><th>Solusi Existing</th><th>Kelemahan Utama</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Transfer Langsung</td><td>Tidak ada perlindungan sama sekali</td></tr>
+      <tr><td>Rekber Manual</td><td>Bergantung pada kepercayaan pihak ketiga</td></tr>
+      <tr><td>Platform Freelance (Upwork, Fiverr)</td><td>Biaya sangat tinggi (15-20%)</td></tr>
+      <tr><td>E-wallet</td><td>Tidak ada mekanisme escrow</td></tr>
+    </tbody>
   </table>
 </section>
 
-<!-- Section 3: Solusi -->
+<!-- Section 3 -->
 <section id="solution">
-  <h2>3. Solusi MyQRIS</h2>
+  <h2><span class="num">3</span> Solusi MyQRIS</h2>
 
-  <div class="flow-diagram">
-    <div class="flow-box">Web2 UX<br><small>React + TS</small></div>
+  <p>MyQRIS menggabungkan pengalaman pengguna Web2 yang familiar dengan keamanan Web3 untuk memberikan solusi escrow terbaik di Indonesia.</p>
+
+  <div class="flow-container">
+    <div class="flow-step">
+      <div class="flow-box primary">Frontend<small>React + TypeScript</small></div>
+    </div>
     <span class="flow-arrow">→</span>
-    <div class="flow-box" style="background:var(--success)">Backend API<br><small>Business Logic</small></div>
+    <div class="flow-step">
+      <div class="flow-box dark">Backend API<small>Business Logic</small></div>
+    </div>
     <span class="flow-arrow">→</span>
-    <div class="flow-box" style="background:var(--warning)">Blockchain<br><small>Base L2</small></div>
+    <div class="flow-step">
+      <div class="flow-box success">Blockchain<small>Base L2</small></div>
+    </div>
+    <span class="flow-arrow">→</span>
+    <div class="flow-step">
+      <div class="flow-box warning">IDRX<small>Stablecoin</small></div>
+    </div>
   </div>
 
   <div class="grid grid-2">
-    <div class="card success">
-      <h4>Keunggulan</h4>
+    <div class="card">
+      <div class="card-icon success">✓</div>
+      <h4>Keunggulan MyQRIS</h4>
       <ul>
-        <li><strong>Transparansi:</strong> Semua transaksi on-chain</li>
-        <li><strong>Keamanan:</strong> Smart contract immutable</li>
-        <li><strong>Biaya Rendah:</strong> Hanya 1.5%</li>
-        <li><strong>Kecepatan:</strong> Settlement instan</li>
+        <li><strong>Transparansi:</strong> Semua transaksi tercatat on-chain</li>
+        <li><strong>Keamanan:</strong> Smart contract yang immutable</li>
+        <li><strong>Biaya Rendah:</strong> Hanya 1.5% per transaksi</li>
+        <li><strong>Kecepatan:</strong> Settlement instan dengan IDRX</li>
+        <li><strong>Audit Trail:</strong> Riwayat permanen di blockchain</li>
       </ul>
     </div>
     <div class="card">
-      <h4>Tech Stack</h4>
+      <div class="card-icon primary">⚙️</div>
+      <h4>Tech Stack Modern</h4>
       <ul>
-        <li>Frontend: React + TailwindCSS</li>
-        <li>Blockchain: Base (Ethereum L2)</li>
-        <li>Token: IDRX (ERC-20)</li>
-        <li>Wallet: WalletConnect</li>
+        <li><strong>Frontend:</strong> React + TailwindCSS + shadcn/ui</li>
+        <li><strong>State:</strong> TanStack Query</li>
+        <li><strong>Blockchain:</strong> Base (Ethereum L2)</li>
+        <li><strong>Token:</strong> IDRX (ERC-20 Stablecoin)</li>
+        <li><strong>Wallet:</strong> WalletConnect, Coinbase</li>
       </ul>
     </div>
   </div>
 </section>
 
-<!-- Section 4: Arsitektur -->
+<!-- Section 4 -->
 <section id="architecture">
-  <h2>4. Arsitektur Sistem</h2>
+  <h2><span class="num">4</span> Arsitektur Sistem</h2>
   <div id="architecture-org-chart" class="chart-container"></div>
 
   <h3>Distribusi Status Proyek</h3>
   <div id="project-status-chart" class="chart-container"></div>
 </section>
 
-<!-- Section 5: Blockchain -->
+<!-- Section 5 -->
 <section id="blockchain">
-  <h2>5. Teknologi Blockchain</h2>
+  <h2><span class="num">5</span> Teknologi Blockchain</h2>
 
-  <h3>Mengapa Base?</h3>
+  <p>Base adalah Layer 2 blockchain yang dibangun di atas Ethereum oleh Coinbase, menawarkan keamanan Ethereum dengan biaya dan kecepatan yang jauh lebih baik.</p>
+
   <table>
-    <tr><th>Fitur</th><th>Ethereum L1</th><th>Base L2 ✓</th></tr>
-    <tr><td>Gas Fee</td><td>$5-50</td><td><strong>$0.001-0.01</strong></td></tr>
-    <tr><td>Speed</td><td>15-30 detik</td><td><strong>2 detik</strong></td></tr>
-    <tr><td>TPS</td><td>~15</td><td><strong>~2000</strong></td></tr>
-    <tr><td>Security</td><td>Native</td><td>Ethereum-level</td></tr>
+    <thead>
+      <tr><th>Fitur</th><th>Ethereum L1</th><th>Base L2 ✓</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Gas Fee</td><td>$5 - $50</td><td><span class="badge badge-success">$0.001 - $0.01</span></td></tr>
+      <tr><td>Speed</td><td>15-30 detik</td><td><span class="badge badge-success">~2 detik</span></td></tr>
+      <tr><td>TPS</td><td>~15</td><td><span class="badge badge-success">~2000</span></td></tr>
+      <tr><td>Security</td><td>Native</td><td>Ethereum-level</td></tr>
+    </tbody>
   </table>
 
-  <h3>Data On-Chain vs Off-Chain</h3>
-  <div class="grid grid-2">
-    <div class="card">
-      <h4>On-Chain (Blockchain)</h4>
-      <p>Dana Escrow, Status Proyek, Milestone, Payment History, Dispute Resolution</p>
+  <h3>Strategi Penyimpanan Data</h3>
+  <div class="comparison">
+    <div class="comparison-item highlight">
+      <h4>🔗 On-Chain (Blockchain)</h4>
+      <p>Dana Escrow (IDRX), Status Proyek, Milestone Completion, Payment History, Dispute Resolution, Transaction Hash</p>
     </div>
-    <div class="card">
-      <h4>Off-Chain (Database)</h4>
-      <p>Data Profil, Deskripsi Proyek, File Attachment, Chat, Notifikasi</p>
+    <div class="comparison-item">
+      <h4>🗄️ Off-Chain (Database)</h4>
+      <p>Data Profil User, Deskripsi Proyek, File Attachment, Chat Messages, Notifikasi</p>
     </div>
   </div>
 </section>
 
-<!-- Section 6: Smart Contract -->
+<!-- Section 6 -->
 <section id="smart-contract">
-  <h2>6. Smart Contract</h2>
+  <h2><span class="num">6</span> Smart Contract</h2>
 
   <pre><code><span class="code-comment">// SPDX-License-Identifier: MIT</span>
 <span class="code-keyword">pragma solidity</span> ^0.8.19;
 
-<span class="code-keyword">contract</span> MyQRISEscrow <span class="code-keyword">is</span> ReentrancyGuard {
-    <span class="code-keyword">enum</span> ProjectStatus { Created, Funded, InProgress, Review, Completed, Disputed, Cancelled }
-    <span class="code-keyword">enum</span> MilestoneStatus { Pending, InProgress, Submitted, Approved, Rejected }
+<span class="code-keyword">import</span> <span class="code-string">"@openzeppelin/contracts/security/ReentrancyGuard.sol"</span>;
 
-    <span class="code-keyword">struct</span> Project {
-        <span class="code-keyword">address</span> client;
-        <span class="code-keyword">address</span> freelancer;
-        <span class="code-keyword">uint256</span> totalAmount;
-        ProjectStatus status;
-        Milestone[] milestones;
+<span class="code-keyword">contract</span> <span class="code-type">MyQRISEscrow</span> <span class="code-keyword">is</span> ReentrancyGuard {
+
+    <span class="code-keyword">enum</span> <span class="code-type">ProjectStatus</span> {
+        Created, Funded, InProgress, Review, Completed, Disputed, Cancelled
     }
 
-    <span class="code-keyword">mapping</span>(bytes32 => Project) <span class="code-keyword">public</span> projects;
+    <span class="code-keyword">enum</span> <span class="code-type">MilestoneStatus</span> {
+        Pending, InProgress, Submitted, Approved, Rejected
+    }
 
-    <span class="code-keyword">event</span> ProjectCreated(bytes32 projectId, <span class="code-keyword">address</span> client);
-    <span class="code-keyword">event</span> FundsReleased(bytes32 projectId, <span class="code-keyword">uint256</span> amount);
+    <span class="code-keyword">struct</span> <span class="code-type">Project</span> {
+        <span class="code-type">address</span> client;
+        <span class="code-type">address</span> freelancer;
+        <span class="code-type">uint256</span> totalAmount;
+        <span class="code-type">uint256</span> releasedAmount;
+        <span class="code-type">ProjectStatus</span> status;
+        <span class="code-type">Milestone</span>[] milestones;
+    }
+
+    <span class="code-keyword">mapping</span>(<span class="code-type">bytes32</span> => <span class="code-type">Project</span>) <span class="code-keyword">public</span> projects;
+
+    <span class="code-keyword">event</span> <span class="code-func">ProjectCreated</span>(<span class="code-type">bytes32</span> projectId, <span class="code-type">address</span> client);
+    <span class="code-keyword">event</span> <span class="code-func">FundsReleased</span>(<span class="code-type">bytes32</span> projectId, <span class="code-type">uint256</span> amount);
+    <span class="code-keyword">event</span> <span class="code-func">DisputeRaised</span>(<span class="code-type">bytes32</span> projectId, <span class="code-type">address</span> initiator);
 }</code></pre>
 
-  <h3>State Machine Proyek</h3>
+  <h3>Project State Flow</h3>
   <div id="project-flow-sankey" class="chart-container"></div>
 </section>
 
-<!-- Section 7: IDRX -->
+<!-- Section 7 -->
 <section id="idrx">
-  <h2>7. Integrasi IDRX</h2>
+  <h2><span class="num">7</span> Integrasi IDRX</h2>
 
-  <div class="highlight">
-    <h3>1 IDRX = Rp 1</h3>
-    <p>Stablecoin ERC-20 di Base Network • Fully Backed • Instant Settlement</p>
+  <div class="hero-stats">
+    <div class="stat-card">
+      <div class="stat-value">1:1</div>
+      <div class="stat-label">1 IDRX = Rp 1</div>
+    </div>
+    <div class="stat-card alt">
+      <div class="stat-value">ERC-20</div>
+      <div class="stat-label">Token Standard</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value">~Rp 100</div>
+      <div class="stat-label">Biaya Transfer</div>
+    </div>
   </div>
 
-  <h3>Flow Pembayaran</h3>
+  <h3>Flow Pembayaran dengan IDRX</h3>
   <div id="escrow-flow-diagram" class="chart-container"></div>
 
   <div class="grid grid-2">
-    <div class="card success">
+    <div class="card">
+      <div class="card-icon success">📥</div>
       <h4>Top-up Options</h4>
       <ul>
-        <li>Bank Transfer (Virtual Account)</li>
-        <li>QRIS Payment</li>
-        <li>Crypto Wallet (Direct IDRX)</li>
+        <li>Bank Transfer (Virtual Account) - Auto convert</li>
+        <li>QRIS Payment - Instant credit</li>
+        <li>Crypto Wallet - Direct IDRX transfer</li>
       </ul>
     </div>
     <div class="card">
+      <div class="card-icon primary">📤</div>
       <h4>Withdrawal Options</h4>
       <ul>
-        <li>Bank Transfer (T+1 settlement)</li>
-        <li>Crypto Wallet (Instant)</li>
+        <li>Bank Transfer - T+1 settlement</li>
+        <li>Crypto Wallet - Instant IDRX</li>
       </ul>
     </div>
   </div>
 </section>
 
-<!-- Section 8: Alur Escrow -->
+<!-- Section 8 -->
 <section id="escrow-flow">
-  <h2>8. Alur Escrow</h2>
+  <h2><span class="num">8</span> Alur Escrow</h2>
 
   <h3>Milestone Timeline</h3>
-  <div id="milestone-timeline" class="chart-container" style="min-height:200px"></div>
+  <div id="milestone-timeline" class="chart-container" style="min-height:220px"></div>
 
-  <h3>Complete Flow</h3>
+  <h3>Complete Escrow Flow</h3>
   <div class="timeline">
-    <div class="timeline-item done"><strong>Fase 1:</strong> Klien buat proyek & tentukan milestone</div>
-    <div class="timeline-item done"><strong>Fase 2:</strong> Fund milestone dengan IDRX → Dana terkunci</div>
-    <div class="timeline-item done"><strong>Fase 3:</strong> Freelancer kerjakan & submit deliverable</div>
-    <div class="timeline-item"><strong>Fase 4:</strong> Klien review → Approve/Revisi/Auto-approve (3 hari)</div>
+    <div class="timeline-item done">
+      <strong>Fase 1: Project Creation</strong><br>
+      Klien membuat proyek, menentukan budget, deadline, dan breakdown milestone
+    </div>
+    <div class="timeline-item done">
+      <strong>Fase 2: Funding</strong><br>
+      Klien transfer IDRX → Dana terkunci di smart contract
+    </div>
+    <div class="timeline-item done">
+      <strong>Fase 3: Execution</strong><br>
+      Freelancer mengerjakan dan submit deliverable setiap milestone
+    </div>
+    <div class="timeline-item">
+      <strong>Fase 4: Review & Release</strong><br>
+      Klien approve → Dana release | Revisi → Kembali ke Fase 3 | Timeout 3 hari → Auto-release
+    </div>
   </div>
 
-  <h3>Dispute Resolution</h3>
+  <h3>Dispute Resolution Funnel</h3>
   <div id="dispute-funnel-chart" class="chart-container"></div>
 </section>
 
-<!-- Section 9: Security -->
+<!-- Section 9 -->
 <section id="security">
-  <h2>9. Keamanan</h2>
+  <h2><span class="num">9</span> Keamanan</h2>
 
-  <div class="grid grid-2">
+  <div class="grid grid-3">
     <div class="card">
-      <h4>Application Security</h4>
+      <div class="card-icon primary">🔐</div>
+      <h4>Application Layer</h4>
       <ul>
-        <li>JWT + Refresh Token</li>
-        <li>Rate Limiting</li>
+        <li>JWT + Refresh Token Auth</li>
+        <li>Rate Limiting & DDoS Protection</li>
         <li>XSS & CSRF Protection</li>
         <li>Encrypted Data at Rest</li>
       </ul>
     </div>
-    <div class="card success">
-      <h4>Blockchain Security</h4>
+    <div class="card">
+      <div class="card-icon success">⛓️</div>
+      <h4>Blockchain Layer</h4>
       <ul>
         <li>Smart Contract Audit</li>
         <li>Reentrancy Guard</li>
-        <li>Emergency Pause</li>
-        <li>Multi-sig Admin</li>
+        <li>Emergency Pause Function</li>
+        <li>Access Control (RBAC)</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-icon warning">🏢</div>
+      <h4>Operational Layer</h4>
+      <ul>
+        <li>Multi-sig Admin Wallet</li>
+        <li>Hardware Security Modules</li>
+        <li>24/7 Monitoring</li>
+        <li>Bug Bounty Program</li>
       </ul>
     </div>
   </div>
 
   <pre><code><span class="code-comment">// Security Constants</span>
-<span class="code-keyword">uint256 public constant</span> TIMELOCK_DURATION = 24 hours;
-<span class="code-keyword">uint256 public constant</span> AUTO_RELEASE_DELAY = 3 days;
-<span class="code-keyword">uint256 public constant</span> MAX_SINGLE_TX = 100_000_000; <span class="code-comment">// 100 juta IDRX</span></code></pre>
+<span class="code-type">uint256</span> <span class="code-keyword">public constant</span> TIMELOCK_DURATION = <span class="code-string">24 hours</span>;
+<span class="code-type">uint256</span> <span class="code-keyword">public constant</span> AUTO_RELEASE_DELAY = <span class="code-string">3 days</span>;
+<span class="code-type">uint256</span> <span class="code-keyword">public constant</span> MAX_SINGLE_TX = <span class="code-string">100_000_000</span>; <span class="code-comment">// 100 juta IDRX</span>
+<span class="code-type">uint256</span> <span class="code-keyword">public constant</span> MULTISIG_THRESHOLD = <span class="code-string">10_000_000</span>; <span class="code-comment">// 10 juta IDRX</span></code></pre>
 </section>
 
-<!-- Section 10: Roadmap -->
+<!-- Section 10 -->
 <section id="roadmap">
-  <h2>10. Roadmap</h2>
+  <h2><span class="num">10</span> Roadmap</h2>
 
   <h3>Proyeksi Pertumbuhan User</h3>
   <div id="user-growth-chart" class="chart-container"></div>
 
-  <h3>Volume Transaksi</h3>
+  <h3>Volume Transaksi Bulanan</h3>
   <div id="transaction-volume-chart" class="chart-container"></div>
 
+  <h3>Development Timeline</h3>
   <div class="timeline">
-    <div class="timeline-item done"><strong>Q4 2025 - Foundation:</strong> MVP Launch, Smart Contract, IDRX Integration, Security Audit</div>
-    <div class="timeline-item"><strong>Q1 2026 - Growth:</strong> Public Launch, Mobile App, 1K Users</div>
-    <div class="timeline-item"><strong>Q2 2026 - Expansion:</strong> Marketplace, Reputation System, 10K Users</div>
-    <div class="timeline-item"><strong>Q3 2026 - Ecosystem:</strong> DAO Governance, Staking, 50K Users</div>
-    <div class="timeline-item"><strong>Q4 2026 - Scale:</strong> Regional Expansion (SEA), 100K Users</div>
+    <div class="timeline-item done">
+      <strong>Q4 2025 - Foundation</strong><br>
+      MVP Launch • Smart Contract Development • IDRX Integration • Security Audit • Beta Testing (100 users)
+    </div>
+    <div class="timeline-item">
+      <strong>Q1 2026 - Growth</strong><br>
+      Public Launch • Mobile App (React Native) • Escrow API • Target: 1,000 Active Users
+    </div>
+    <div class="timeline-item">
+      <strong>Q2 2026 - Expansion</strong><br>
+      Marketplace Integration • Subscription Plans • Reputation System • Target: 10,000 Active Users
+    </div>
+    <div class="timeline-item">
+      <strong>Q3 2026 - Ecosystem</strong><br>
+      DAO Governance • Staking Rewards • Cross-chain Bridge • Target: 50,000 Active Users
+    </div>
+    <div class="timeline-item">
+      <strong>Q4 2026 - Scale</strong><br>
+      Regional Expansion (SEA) • Institutional Partnerships • Target: 100,000 Active Users
+    </div>
   </div>
 
   <h3>Fee Structure</h3>
   <table>
-    <tr><th>Transaksi</th><th>Biaya</th></tr>
-    <tr><td>Escrow Fee</td><td><span class="badge badge-primary">1.5%</span></td></tr>
-    <tr><td>Withdrawal ke Bank</td><td>Rp 5,000 flat</td></tr>
-    <tr><td>Withdrawal ke Crypto</td><td>~Rp 100 (gas)</td></tr>
-    <tr><td>Dispute Resolution</td><td><span class="badge badge-success">Gratis</span></td></tr>
+    <thead>
+      <tr><th>Transaksi</th><th>Biaya</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Escrow Fee</td><td><span class="badge badge-primary">1.5% dari nilai proyek</span></td></tr>
+      <tr><td>Withdrawal ke Bank</td><td>Rp 5,000 flat</td></tr>
+      <tr><td>Withdrawal ke Crypto</td><td>~Rp 100 (gas fee)</td></tr>
+      <tr><td>Dispute Resolution</td><td><span class="badge badge-success">Gratis</span></td></tr>
+    </tbody>
   </table>
 </section>
 
 <!-- Glossary -->
 <section>
-  <h2>Glosarium</h2>
+  <h2><span class="num">📖</span> Glosarium</h2>
   <table>
-    <tr><th>Istilah</th><th>Definisi</th></tr>
-    <tr><td>Escrow</td><td>Layanan pihak ketiga yang menahan dana sampai syarat terpenuhi</td></tr>
-    <tr><td>Smart Contract</td><td>Program yang berjalan di blockchain secara otomatis</td></tr>
-    <tr><td>IDRX</td><td>Stablecoin 1:1 dengan Rupiah Indonesia</td></tr>
-    <tr><td>Base</td><td>Layer 2 blockchain di atas Ethereum oleh Coinbase</td></tr>
-    <tr><td>ERC-20</td><td>Standar token di jaringan Ethereum</td></tr>
+    <thead>
+      <tr><th>Istilah</th><th>Definisi</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Escrow</strong></td><td>Layanan pihak ketiga yang menahan dana sampai syarat transaksi terpenuhi</td></tr>
+      <tr><td><strong>Smart Contract</strong></td><td>Program yang berjalan di blockchain secara otomatis dan tidak dapat diubah</td></tr>
+      <tr><td><strong>IDRX</strong></td><td>Stablecoin yang dipeg 1:1 dengan Rupiah Indonesia</td></tr>
+      <tr><td><strong>Base</strong></td><td>Layer 2 blockchain di atas Ethereum, dikembangkan oleh Coinbase</td></tr>
+      <tr><td><strong>ERC-20</strong></td><td>Standar token yang paling umum digunakan di jaringan Ethereum</td></tr>
+      <tr><td><strong>Gas Fee</strong></td><td>Biaya yang dibayar untuk menjalankan transaksi di blockchain</td></tr>
+      <tr><td><strong>Multi-sig</strong></td><td>Wallet yang membutuhkan multiple signatures untuk transaksi</td></tr>
+    </tbody>
   </table>
 </section>
 
 </div>
 
 <footer>
-  <p><strong>MyQRIS</strong> - Platform Escrow Blockchain untuk Indonesia</p>
-  <p style="margin-top:10px">
-    <a href="https://myqris.link">Website</a> •
-    <a href="mailto:info@myqris.link">Email</a> •
-    <a href="https://twitter.com/myqris_id">Twitter</a> •
+  <div class="footer-logo">MyQRIS</div>
+  <p>Platform Escrow Blockchain untuk Indonesia</p>
+  <div class="footer-links">
+    <a href="https://myqris.link">Website</a>
+    <a href="mailto:info@myqris.link">Email</a>
+    <a href="https://twitter.com/myqris_id">Twitter</a>
     <a href="https://t.me/myqris_community">Telegram</a>
-  </p>
-  <p style="margin-top:20px;font-size:0.8rem;opacity:0.7">
-    © 2025 MyQRIS. Dokumen ini adalah whitepaper teknis dan bukan penawaran investasi.
+  </div>
+  <p class="footer-copy">
+    © 2025 MyQRIS. Dokumen ini adalah whitepaper teknis dan bukan merupakan penawaran investasi.
   </p>
 </footer>
 
@@ -389,14 +963,24 @@ function initCharts() {
 function drawFeeComparison() {
   var data = google.visualization.arrayToDataTable([
     ['Platform', 'Fee (%)', {role:'style'}, {role:'annotation'}],
-    ['Upwork', 20, '#6B7280', '20%'],
-    ['Fiverr', 20, '#6B7280', '20%'],
-    ['Freelancer.com', 10, '#6B7280', '10%'],
-    ['Sribulancer', 10, '#6B7280', '10%'],
-    ['Projects.co.id', 5, '#6B7280', '5%'],
-    ['MyQRIS', 1.5, '#0052FF', '1.5%']
+    ['Upwork', 20, '#94A3B8', '20%'],
+    ['Fiverr', 20, '#94A3B8', '20%'],
+    ['Freelancer.com', 10, '#94A3B8', '10%'],
+    ['Sribulancer', 10, '#94A3B8', '10%'],
+    ['Projects.co.id', 5, '#94A3B8', '5%'],
+    ['MyQRIS', 1.5, '#3B82F6', '1.5%']
   ]);
-  var options = {title:'Perbandingan Fee Platform',legend:{position:'none'},hAxis:{title:'Fee (%)',minValue:0,maxValue:25},chartArea:{width:'60%'},animation:{startup:true,duration:1000}};
+  var options = {
+    title: 'Perbandingan Fee Platform Freelance',
+    titleTextStyle: {color: '#0F172A', fontSize: 16, bold: true},
+    legend: {position: 'none'},
+    hAxis: {title: 'Fee (%)', minValue: 0, maxValue: 25, textStyle: {color: '#64748B'}},
+    vAxis: {textStyle: {color: '#0F172A', fontSize: 13}},
+    chartArea: {width: '65%', height: '75%'},
+    bar: {groupWidth: '70%'},
+    backgroundColor: 'transparent',
+    animation: {startup: true, duration: 800, easing: 'out'}
+  };
   new google.visualization.BarChart(document.getElementById('fee-comparison-chart')).draw(data, options);
 }
 
@@ -409,7 +993,16 @@ function drawProjectStatus() {
     ['Disputed', 5],
     ['Cancelled', 5]
   ]);
-  var options = {title:'Distribusi Status Proyek',pieHole:0.4,colors:['#10B981','#0052FF','#F59E0B','#EF4444','#6B7280'],legend:{position:'right'},chartArea:{width:'90%',height:'80%'}};
+  var options = {
+    title: 'Distribusi Status Proyek',
+    titleTextStyle: {color: '#0F172A', fontSize: 16, bold: true},
+    pieHole: 0.45,
+    colors: ['#10B981', '#3B82F6', '#F59E0B', '#EF4444', '#94A3B8'],
+    legend: {position: 'right', textStyle: {color: '#64748B', fontSize: 13}},
+    chartArea: {width: '90%', height: '85%'},
+    backgroundColor: 'transparent',
+    pieSliceTextStyle: {color: 'white', fontSize: 12}
+  };
   new google.visualization.PieChart(document.getElementById('project-status-chart')).draw(data, options);
 }
 
@@ -419,16 +1012,16 @@ function drawArchitectureOrg() {
   data.addColumn('string', 'Parent');
   data.addColumn('string', 'Tooltip');
   data.addRows([
-    [{v:'platform',f:'<div style="background:#0052FF;color:#fff;padding:10px;border-radius:8px"><b>MyQRIS Platform</b></div>'}, '', 'Platform Utama'],
-    [{v:'frontend',f:'<div style="background:#10B981;color:#fff;padding:8px;border-radius:6px">Frontend<br><small>React + TS</small></div>'}, 'platform', 'User Interface'],
-    [{v:'backend',f:'<div style="background:#F59E0B;color:#fff;padding:8px;border-radius:6px">Backend API</div>'}, 'platform', 'Business Logic'],
-    [{v:'blockchain',f:'<div style="background:#6B7280;color:#fff;padding:8px;border-radius:6px">Blockchain Layer</div>'}, 'platform', 'Smart Contract'],
-    [{v:'db',f:'<div style="padding:6px">PostgreSQL</div>'}, 'backend', 'Database'],
-    [{v:'base',f:'<div style="padding:6px">Base Network</div>'}, 'blockchain', 'L2 Ethereum'],
-    [{v:'idrx',f:'<div style="padding:6px">IDRX Token</div>'}, 'blockchain', 'Stablecoin']
+    [{v:'platform',f:'<div style="background:linear-gradient(135deg,#3B82F6,#8B5CF6);color:#fff;padding:14px 24px;border-radius:12px;font-weight:600;font-size:15px">MyQRIS Platform</div>'}, '', ''],
+    [{v:'frontend',f:'<div style="background:#10B981;color:#fff;padding:10px 18px;border-radius:10px;font-size:13px"><b>Frontend</b><br>React + TS</div>'}, 'platform', ''],
+    [{v:'backend',f:'<div style="background:#F59E0B;color:#fff;padding:10px 18px;border-radius:10px;font-size:13px"><b>Backend</b><br>REST API</div>'}, 'platform', ''],
+    [{v:'blockchain',f:'<div style="background:#0F172A;color:#fff;padding:10px 18px;border-radius:10px;font-size:13px"><b>Blockchain</b><br>Base L2</div>'}, 'platform', ''],
+    [{v:'db',f:'<div style="background:#E2E8F0;padding:8px 14px;border-radius:8px;font-size:12px">PostgreSQL</div>'}, 'backend', ''],
+    [{v:'auth',f:'<div style="background:#E2E8F0;padding:8px 14px;border-radius:8px;font-size:12px">Auth Service</div>'}, 'backend', ''],
+    [{v:'base',f:'<div style="background:#E2E8F0;padding:8px 14px;border-radius:8px;font-size:12px">Smart Contract</div>'}, 'blockchain', ''],
+    [{v:'idrx',f:'<div style="background:#E2E8F0;padding:8px 14px;border-radius:8px;font-size:12px">IDRX Token</div>'}, 'blockchain', '']
   ]);
-  var options = {allowHtml:true,size:'medium'};
-  new google.visualization.OrgChart(document.getElementById('architecture-org-chart')).draw(data, options);
+  new google.visualization.OrgChart(document.getElementById('architecture-org-chart')).draw(data, {allowHtml:true, size:'large'});
 }
 
 function drawEscrowFlow() {
@@ -437,16 +1030,27 @@ function drawEscrowFlow() {
   data.addColumn('string', 'To');
   data.addColumn('number', 'Amount');
   data.addRows([
-    ['Klien (Bank)', 'IDRX Mint', 100],
+    ['Klien (Bank/QRIS)', 'IDRX Mint', 100],
     ['IDRX Mint', 'Escrow Contract', 100],
-    ['Escrow Contract', 'Milestone 1', 40],
-    ['Escrow Contract', 'Milestone 2', 40],
-    ['Escrow Contract', 'Milestone 3', 20],
-    ['Milestone 1', 'Freelancer', 40],
-    ['Milestone 2', 'Freelancer', 40],
-    ['Milestone 3', 'Freelancer', 20]
+    ['Escrow Contract', 'Milestone 1 (40%)', 40],
+    ['Escrow Contract', 'Milestone 2 (40%)', 40],
+    ['Escrow Contract', 'Milestone 3 (20%)', 20],
+    ['Milestone 1 (40%)', 'Freelancer Wallet', 40],
+    ['Milestone 2 (40%)', 'Freelancer Wallet', 40],
+    ['Milestone 3 (20%)', 'Freelancer Wallet', 20]
   ]);
-  var options = {width:'100%',height:350,sankey:{node:{colors:['#0052FF','#10B981','#F59E0B'],label:{fontSize:12}},link:{colorMode:'gradient'}}};
+  var options = {
+    height: 350,
+    sankey: {
+      node: {
+        colors: ['#3B82F6', '#8B5CF6', '#10B981', '#F59E0B'],
+        label: {fontSize: 12, color: '#0F172A', bold: true},
+        nodePadding: 30,
+        width: 20
+      },
+      link: {colorMode: 'gradient', colors: ['#3B82F6', '#10B981']}
+    }
+  };
   new google.visualization.Sankey(document.getElementById('escrow-flow-diagram')).draw(data, options);
 }
 
@@ -458,16 +1062,21 @@ function drawProjectFlowSankey() {
   data.addRows([
     ['Created', 'Funded', 95],
     ['Created', 'Cancelled', 5],
-    ['Funded', 'InProgress', 90],
+    ['Funded', 'In Progress', 90],
     ['Funded', 'Cancelled', 5],
-    ['InProgress', 'Review', 85],
-    ['InProgress', 'Disputed', 5],
+    ['In Progress', 'Review', 85],
+    ['In Progress', 'Disputed', 5],
     ['Review', 'Completed', 80],
-    ['Review', 'InProgress', 5],
-    ['Disputed', 'Completed', 3],
-    ['Disputed', 'Cancelled', 2]
+    ['Review', 'In Progress', 5],
+    ['Disputed', 'Resolved', 5]
   ]);
-  var options = {height:300,sankey:{node:{colors:['#0052FF','#10B981','#F59E0B','#EF4444','#6B7280']}}};
+  var options = {
+    height: 320,
+    sankey: {
+      node: {colors: ['#3B82F6', '#8B5CF6', '#10B981', '#F59E0B', '#EF4444'], label: {fontSize: 12}},
+      link: {colorMode: 'gradient'}
+    }
+  };
   new google.visualization.Sankey(document.getElementById('project-flow-sankey')).draw(data, options);
 }
 
@@ -480,27 +1089,40 @@ function drawMilestoneTimeline() {
   dataTable.addColumn({type:'date',id:'Start'});
   dataTable.addColumn({type:'date',id:'End'});
   dataTable.addRows([
-    ['Tahap 1', 'Konsep Awal', new Date(2025,0,1), new Date(2025,0,7)],
-    ['Tahap 1', 'Review Klien', new Date(2025,0,7), new Date(2025,0,9)],
-    ['Tahap 2', 'Pengerjaan', new Date(2025,0,9), new Date(2025,0,16)],
-    ['Tahap 2', 'Review', new Date(2025,0,16), new Date(2025,0,18)],
-    ['Tahap 3', 'Finalisasi', new Date(2025,0,18), new Date(2025,0,22)],
-    ['Tahap 3', 'Serah Terima', new Date(2025,0,22), new Date(2025,0,23)]
+    ['Milestone 1', 'Konsep & Desain', new Date(2025,0,1), new Date(2025,0,7)],
+    ['Milestone 1', 'Review Klien', new Date(2025,0,7), new Date(2025,0,9)],
+    ['Milestone 2', 'Development', new Date(2025,0,9), new Date(2025,0,18)],
+    ['Milestone 2', 'Review', new Date(2025,0,18), new Date(2025,0,20)],
+    ['Milestone 3', 'Finalisasi', new Date(2025,0,20), new Date(2025,0,24)],
+    ['Milestone 3', 'Serah Terima', new Date(2025,0,24), new Date(2025,0,25)]
   ]);
-  chart.draw(dataTable, {timeline:{colorByRowLabel:true},colors:['#0052FF','#10B981','#F59E0B']});
+  chart.draw(dataTable, {
+    timeline: {colorByRowLabel: true, showBarLabels: true, barLabelStyle: {fontSize: 11}},
+    colors: ['#3B82F6', '#8B5CF6', '#10B981'],
+    backgroundColor: 'transparent'
+  });
 }
 
 function drawDisputeFunnel() {
   var data = google.visualization.arrayToDataTable([
     ['Stage', 'Count', {role:'style'}],
-    ['Total Transaksi', 1000, '#0052FF'],
-    ['Dispute Diajukan', 50, '#F59E0B'],
-    ['Dalam Review', 40, '#F59E0B'],
+    ['Total Transaksi', 1000, '#3B82F6'],
+    ['Dispute Diajukan (5%)', 50, '#F59E0B'],
+    ['Dalam Review', 40, '#8B5CF6'],
     ['Resolved - Refund', 15, '#10B981'],
     ['Resolved - Release', 20, '#10B981'],
     ['Resolved - Split', 5, '#10B981']
   ]);
-  var options = {title:'Funnel Dispute Resolution',legend:{position:'none'},bar:{groupWidth:'80%'}};
+  var options = {
+    title: 'Dispute Resolution Funnel',
+    titleTextStyle: {color: '#0F172A', fontSize: 16, bold: true},
+    legend: {position: 'none'},
+    bar: {groupWidth: '75%'},
+    chartArea: {width: '70%', height: '80%'},
+    backgroundColor: 'transparent',
+    hAxis: {textStyle: {color: '#64748B'}},
+    vAxis: {textStyle: {color: '#0F172A', fontSize: 12}}
+  };
   new google.visualization.BarChart(document.getElementById('dispute-funnel-chart')).draw(data, options);
 }
 
@@ -513,23 +1135,55 @@ function drawUserGrowth() {
     ['Q3 2026', 8000, 15000],
     ['Q4 2026', 35000, 65000]
   ]);
-  var options = {title:'Proyeksi Pertumbuhan User',isStacked:true,hAxis:{title:'Kuartal'},vAxis:{title:'Jumlah User'},colors:['#0052FF','#10B981'],areaOpacity:0.4};
+  var options = {
+    title: 'Proyeksi Pertumbuhan User',
+    titleTextStyle: {color: '#0F172A', fontSize: 16, bold: true},
+    isStacked: true,
+    hAxis: {title: 'Kuartal', textStyle: {color: '#64748B'}},
+    vAxis: {title: 'Jumlah User', textStyle: {color: '#64748B'}, format: 'short'},
+    colors: ['#3B82F6', '#10B981'],
+    areaOpacity: 0.7,
+    legend: {position: 'top', textStyle: {color: '#64748B'}},
+    chartArea: {width: '80%', height: '70%'},
+    backgroundColor: 'transparent',
+    animation: {startup: true, duration: 1000}
+  };
   new google.visualization.AreaChart(document.getElementById('user-growth-chart')).draw(data, options);
 }
 
 function drawTransactionVolume() {
   var data = google.visualization.arrayToDataTable([
-    ['Bulan', 'Volume (Juta IDR)', 'Jumlah Transaksi'],
+    ['Bulan', 'Volume (Juta IDR)', 'Transaksi'],
     ['Jan', 150, 45], ['Feb', 220, 67], ['Mar', 310, 89],
     ['Apr', 450, 120], ['May', 580, 156], ['Jun', 720, 198],
     ['Jul', 890, 245], ['Aug', 1100, 310], ['Sep', 1350, 389],
     ['Oct', 1600, 456], ['Nov', 1900, 534], ['Dec', 2300, 623]
   ]);
-  var options = {title:'Volume Transaksi Bulanan',curveType:'function',legend:{position:'bottom'},series:{0:{targetAxisIndex:0,color:'#0052FF'},1:{targetAxisIndex:1,color:'#10B981'}},vAxes:{0:{title:'Volume (Juta IDR)'},1:{title:'Jumlah Transaksi'}}};
+  var options = {
+    title: 'Proyeksi Volume Transaksi Bulanan (2026)',
+    titleTextStyle: {color: '#0F172A', fontSize: 16, bold: true},
+    curveType: 'function',
+    legend: {position: 'top', textStyle: {color: '#64748B'}},
+    series: {
+      0: {targetAxisIndex: 0, color: '#3B82F6', lineWidth: 3},
+      1: {targetAxisIndex: 1, color: '#10B981', lineWidth: 3}
+    },
+    vAxes: {
+      0: {title: 'Volume (Juta IDR)', textStyle: {color: '#64748B'}, format: 'short'},
+      1: {title: 'Jumlah Transaksi', textStyle: {color: '#64748B'}}
+    },
+    hAxis: {textStyle: {color: '#64748B'}},
+    chartArea: {width: '75%', height: '65%'},
+    backgroundColor: 'transparent',
+    animation: {startup: true, duration: 1000}
+  };
   new google.visualization.LineChart(document.getElementById('transaction-volume-chart')).draw(data, options);
 }
 
-window.addEventListener('resize', initCharts);
+window.addEventListener('resize', function() {
+  clearTimeout(window.resizeTimer);
+  window.resizeTimer = setTimeout(initCharts, 300);
+});
 </script>
 
 </body>
