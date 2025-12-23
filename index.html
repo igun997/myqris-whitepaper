@@ -794,7 +794,7 @@
   <h2><span class="num">8</span> Alur Escrow</h2>
 
   <h3>Milestone Timeline</h3>
-  <div id="milestone-timeline" class="chart-container" style="min-height:220px"></div>
+  <div id="milestone-timeline" class="chart-container" style="min-height:280px"></div>
 
   <h3>Complete Escrow Flow</h3>
   <div class="timeline">
@@ -1087,22 +1087,31 @@ function drawMilestoneTimeline() {
   var container = document.getElementById('milestone-timeline');
   var chart = new google.visualization.Timeline(container);
   var dataTable = new google.visualization.DataTable();
-  dataTable.addColumn({type:'string',id:'Phase'});
-  dataTable.addColumn({type:'string',id:'Milestone'});
-  dataTable.addColumn({type:'date',id:'Start'});
-  dataTable.addColumn({type:'date',id:'End'});
+  dataTable.addColumn({type:'string', id:'Phase'});
+  dataTable.addColumn({type:'string', id:'Task'});
+  dataTable.addColumn({type:'string', role:'tooltip'});
+  dataTable.addColumn({type:'date', id:'Start'});
+  dataTable.addColumn({type:'date', id:'End'});
   dataTable.addRows([
-    ['Milestone 1', 'Konsep & Desain', new Date(2025,0,1), new Date(2025,0,7)],
-    ['Milestone 1', 'Review Klien', new Date(2025,0,7), new Date(2025,0,9)],
-    ['Milestone 2', 'Development', new Date(2025,0,9), new Date(2025,0,18)],
-    ['Milestone 2', 'Review', new Date(2025,0,18), new Date(2025,0,20)],
-    ['Milestone 3', 'Finalisasi', new Date(2025,0,20), new Date(2025,0,24)],
-    ['Milestone 3', 'Serah Terima', new Date(2025,0,24), new Date(2025,0,25)]
+    ['Milestone 1 (40%)', 'Riset & Konsep', 'Riset kebutuhan dan konsep awal\nDurasi: 5 hari', new Date(2025,0,1), new Date(2025,0,6)],
+    ['Milestone 1 (40%)', 'Desain UI/UX', 'Pembuatan mockup dan prototype\nDurasi: 4 hari', new Date(2025,0,6), new Date(2025,0,10)],
+    ['Milestone 1 (40%)', 'Review & Revisi', 'Review klien dan revisi\nDurasi: 2 hari', new Date(2025,0,10), new Date(2025,0,12)],
+    ['Milestone 2 (40%)', 'Development', 'Pengembangan fitur utama\nDurasi: 10 hari', new Date(2025,0,12), new Date(2025,0,22)],
+    ['Milestone 2 (40%)', 'Testing', 'QA dan bug fixing\nDurasi: 3 hari', new Date(2025,0,22), new Date(2025,0,25)],
+    ['Milestone 3 (20%)', 'Deployment', 'Deploy ke production\nDurasi: 2 hari', new Date(2025,0,25), new Date(2025,0,27)],
+    ['Milestone 3 (20%)', 'Handover', 'Dokumentasi & serah terima\nDurasi: 3 hari', new Date(2025,0,27), new Date(2025,0,30)]
   ]);
   chart.draw(dataTable, {
-    timeline: {colorByRowLabel: true, showBarLabels: true, barLabelStyle: {fontSize: 11}},
+    timeline: {
+      colorByRowLabel: true,
+      showBarLabels: true,
+      barLabelStyle: {fontSize: 12, fontName: 'Inter'},
+      rowLabelStyle: {fontSize: 13, fontName: 'Inter', color: '#0F172A'},
+      showRowLabels: true
+    },
     colors: ['#3B82F6', '#8B5CF6', '#10B981'],
-    backgroundColor: 'transparent'
+    backgroundColor: 'transparent',
+    avoidOverlappingGridLines: true
   });
 }
 
